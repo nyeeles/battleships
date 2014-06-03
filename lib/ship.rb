@@ -1,9 +1,9 @@
 class Ship
 
 	def initialize
-		@position = "",""
+		place(1,1)
 		@sunk = false
-		@hit_counter = 0
+		@hit_counter = 1
 	end
 
 	def hit_counter
@@ -24,11 +24,10 @@ class Ship
 
 	def hit?
 		hit_counter if @position.include?(@fire_position)	
-	end
+	end 
 
 	def sunk?
 		hit_counter == length
-		
 	end
 
 	def length

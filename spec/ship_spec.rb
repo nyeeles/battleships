@@ -37,13 +37,13 @@ describe Ship do
 	end
 
 	it 'should not be sunk' do
+		ship
 		expect(ship.sunk?).to be_false
 	end
 
 	it 'can be sunk' do
 		ship.place(1,2)
 		ship.fire(1)
-		debugger
 		ship.fire(2)
 		expect(ship.sunk?).to be_true
 	end
