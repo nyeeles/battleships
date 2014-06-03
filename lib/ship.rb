@@ -3,10 +3,15 @@ class Ship
 	def initialize
 		@position = "",""
 		@sunk = false
+		@hit_counter = 0
+	end
+
+	def hit_counter
+			@hit_counter += 1
 	end
 
 	def place(position1, position2)
-		@position = position1.to_s, position2.to_s
+		@position = (position1..position2).to_a.map{|el| el.to_s}
 	end
 
 	def position?
@@ -18,11 +23,12 @@ class Ship
 	end
 
 	def hit?
-		@position.include?(@fire_position)
+		hit_counter if @position.include?(@fire_position)	
 	end
 
 	def sunk?
-		@sunk
+		hit_counter == length
+		
 	end
 
 	def length

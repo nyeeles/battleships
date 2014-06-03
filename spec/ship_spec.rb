@@ -1,4 +1,5 @@
 require 'ship'
+require 'debugger'
 
 describe Ship do
 		let(:ship) {Ship.new}
@@ -34,15 +35,17 @@ describe Ship do
 		ship.place(2, 4)
 		expect(ship.length).to eq 3
 	end
-	# it 'should not be sunk' do
-	# 	expect(ship.sunk?).to be_false
-	# end
 
-	# it 'can be sunk' do
-	# 	ship.place(1,2)
-	# 	ship.fire(1)
-	# 	ship.fire(2)
-	# 	expect(ship.sunk?).to be_true
-	# end
+	it 'should not be sunk' do
+		expect(ship.sunk?).to be_false
+	end
+
+	it 'can be sunk' do
+		ship.place(1,2)
+		ship.fire(1)
+		debugger
+		ship.fire(2)
+		expect(ship.sunk?).to be_true
+	end
 
 end
