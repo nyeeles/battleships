@@ -2,6 +2,7 @@ class Ship
 
 	def initialize
 		@position = "",""
+		@sunk = false
 	end
 
 	def place(position1, position2)
@@ -18,5 +19,15 @@ class Ship
 
 	def hit?
 		@position.include?(@fire_position)
+	end
+
+	def sunk?
+		@sunk
+	end
+
+	def length
+		bow = position?.first.to_i
+		sturn = position?.last.to_i
+		ship_length = (bow-sturn).abs + 1
 	end
 end
