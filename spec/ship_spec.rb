@@ -19,11 +19,6 @@ describe 'Ship' do
 			expect(ship.hit?).to be_true
 		end
 
-		it 'can be sunk' do
-			ship.hit!
-			expect(ship.sunk?).to be_true
-		end
-
 		it 'is one square long as default' do
 			expect(ship.length?).to eq 1
 		end
@@ -54,6 +49,21 @@ describe 'Ship' do
 			long_ship = Ship.new(3)
 			grid.place_long_horizontally(long_ship, "C3", "D3", "E3")
 			expect(grid.check("E3")).to eq long_ship
+		end
+
+		it 'will lose a life when it\'s hit' do
+			ship = Ship.new(2)
+			grid.place_medium(ship,'B3')
+			grid.fire_at('B4')
+			expect(ship.lives_left).to eq 1
+		end
+
+		it 'will sink when it loses all its lives' do
+			ship = Ship.new(2)
+			grid.place_medium(ship,'B3')
+			grid.fire_at('B3')
+			grid.fire_at('B4')
+			expect(ship).to be_sunk
 		end
 end
 
