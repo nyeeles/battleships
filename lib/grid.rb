@@ -28,10 +28,23 @@ class Grid
     board
   end
 
+  def place_medium_horizontally(ship, position1, position2)
+    @board[position1] = ship
+    @board[position2] = ship
+    board
+  end
+
   def place_long(ship,position)
     @board[position] = ship
     @board[position.next] = ship
     @board[position.next.next] = ship
+    board
+  end
+
+  def place_long_horizontally(ship, position1, position2, position3)
+    @board[position1] = ship
+    @board[position2] = ship
+    @board[position3] = ship
     board
   end
 
@@ -46,5 +59,12 @@ class Grid
       check(coordinate).hit!
     end
   end
+
+  # def test(position)
+  #   # 0.upto(length - 1).map do |i| 
+  #   #   [(input.split('')[0].ord + i).chr, input.split('')[1]].join
+  #   # 
+  #   [position.split('')[0].next, position.split('')[1]].join
+  # end
 
 end
