@@ -1,8 +1,9 @@
 class Ship
 
-  def initialize
+  def initialize(length=1)
     @hit = false
     @sunk = false
+    @length = length
   end
 
   def hit?
@@ -19,8 +20,8 @@ class Ship
     self
   end
 
-  def length(length)
-    ship_array
+  def length?
+    @length
   end
 
 end

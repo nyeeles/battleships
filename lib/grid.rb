@@ -17,8 +17,21 @@ class Grid
     @board
   end
 
-  def place(ship,position)
+   def place(ship,position)
     @board[position] = ship
+    board
+  end
+
+  def place_medium(ship,position)
+    @board[position] = ship
+    @board[position.next] = ship
+    board
+  end
+
+  def place_long(ship,position)
+    @board[position] = ship
+    @board[position.next] = 
+    @board[position.next.next] = ship
     board
   end
 
