@@ -54,7 +54,7 @@ class Grid
 
   def fire_at(coordinate)
     if check(coordinate) == "sea "
-      "Miss"
+      @board[coordinate] = "missed"
     else
       check(coordinate).hit!
     end
