@@ -57,6 +57,7 @@ class Grid
       @board[coordinate] = "missed"
     else
       check(coordinate).hit!
+      @board[coordinate] = "hit"
     end
   end
 end
