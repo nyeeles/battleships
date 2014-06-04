@@ -1,6 +1,16 @@
 class Grid
+
   def initialize
-    @board = [:sea, :sea]
+    @board = {}
+    create_grid
+  end
+
+  def create_grid
+    ('A'..'J').to_a.each do |letter|
+      (1..10).to_a.each do |number|
+        @board["#{letter}#{number}"] = "sea "
+      end
+    end
   end
 
   def board
@@ -17,34 +27,11 @@ class Grid
   end
 
   def fire_at(coordinate)
-    if check(coordinate) == :sea
+    if check(coordinate) == "sea "
       "Miss"
     else
       check(coordinate).hit!
     end
-  end
-
-end
-
-class Ship
-
-  def initialize
-    @hit = false
-    @sunk = false§§
-  end
-
-  def hit?
-    @hit
-  end
-
-  def sunk?
-    @sunk
-  end
-
-  def hit!
-    @hit = true
-    @sunk = true
-    self
   end
 
 end

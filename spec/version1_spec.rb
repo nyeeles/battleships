@@ -20,7 +20,9 @@ describe 'Battleships' do
 			expect(ship.hit?).to be_true
 		end
 
-		it ''do
+		it 'can be sunk' do
+			ship.hit!
+			expect(ship.sunk?).to be_true
 		end
 
 	end
