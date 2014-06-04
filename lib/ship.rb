@@ -11,16 +11,20 @@ class Ship
     @hit
   end
 
-  def sunk?
-    @sunk
+  def sink!
     if lives_left == 0
       @sunk = true
     end
   end
 
+  def sunk?
+    @sunk
+  end
+
   def hit!
     @hit = true
     remove_life!
+    sink!
     self
   end
 
