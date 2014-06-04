@@ -2,13 +2,9 @@ require 'ship'
 require 'grid'
 
 describe 'Ship' do
-	let (:ship) {Ship.new}
-	let (:grid) {Grid.new}
-
-		it 'can be placed' do
-			grid.place(ship,"H2")
-			expect(grid.check("H2")).to eq ship
-		end
+	let (:ship) { Ship.new }
+	let (:grid) { Grid.new }
+	let (:patrol_boat) { Ship.new(2) }
 
 		it 'should not be hit when initialized' do
 			expect(ship.hit?).to_not be_true
@@ -19,7 +15,7 @@ describe 'Ship' do
 			expect(ship.hit?).to be_true
 		end
 
-		it 'is one square long as default' do
+		it 'has a default length of 1 square' do
 			expect(ship.length?).to eq 1
 		end
 
@@ -51,19 +47,17 @@ describe 'Ship' do
 			expect(grid.check("E3")).to eq long_ship
 		end
 
-		it 'will lose a life when it\'s hit' do
-			ship = Ship.new(2)
-			grid.place_medium(ship,'B3')
+		it 'will lose a life when hit' do
+			grid.place_medium(patrol_boat,'B3')
 			grid.fire_at('B4')
 			expect(ship.lives_left).to eq 1
 		end
 
-		it 'will sink when it loses all its lives' do
-			ship = Ship.new(2)
-			grid.place_medium(ship,'B3')
+		it 'will sink after all lives are lost' do
+			grid.place_medium(patrol_boat,'B3')
 			grid.fire_at('B3')
 			grid.fire_at('B4')
-			expect(ship).to be_sunk
+			expect(patrol_boat).to be_sunk
 		end
 end
 

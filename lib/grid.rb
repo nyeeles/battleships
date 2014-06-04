@@ -4,6 +4,8 @@ class Grid
     @board = {}
     create_grid
   end
+  
+  attr_reader :board
 
   def create_grid
     ('A'..'J').to_a.each do |letter|
@@ -13,11 +15,7 @@ class Grid
     end
   end
 
-  def board
-    @board
-  end
-
-   def place(ship,position)
+  def place(ship,position)
     @board[position] = ship
     board
   end

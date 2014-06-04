@@ -11,24 +11,22 @@ class Ship
     @hit
   end
 
-  def sink!
-    if lives_left == 0
-      @sunk = true
-    end
+   def hit!
+    @hit = true
+    remove_a_life!
+    sink_if_no_lives_left!
+    self
+  end
+
+  def sink_if_no_lives_left!
+    lives_left == 0 ? @sunk=true : @sunk
   end
 
   def sunk?
     @sunk
   end
 
-  def hit!
-    @hit = true
-    remove_life!
-    sink!
-    self
-  end
-
-  def remove_life!
+  def remove_a_life!
     @lives_left -= 1
   end
 
@@ -39,5 +37,4 @@ class Ship
   def lives_left
     @lives_left
   end
-
 end
