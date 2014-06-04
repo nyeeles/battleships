@@ -25,9 +25,9 @@ describe 'Ship' do
 			expect(ship.sunk?).to be_true
 		end
 
-		it 'can be longer than one' do
-			longship.length(3)
-			grid.place(longship, "B5")
-			expect(grid.check("D5")).to eq longship
-		end
+		# it 'can be longer than one' do
+		# 	longship.length(3)
+		# 	grid.place(longship, "B5")
+		# 	expect(grid.check("D5")).to eq longship
+		# end
 end
