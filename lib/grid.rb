@@ -30,7 +30,7 @@ class Grid
 
   def place_long(ship,position)
     @board[position] = ship
-    @board[position.next] = 
+    @board[position.next] = ship
     @board[position.next.next] = ship
     board
   end
