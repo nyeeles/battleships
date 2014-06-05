@@ -3,7 +3,7 @@ require 'player'
 require 'grid'
 
 	describe 'Battleships' do
-		let (:player) {player.new}
+		let (:player) {Player.new}
 		let (:game) {Game.new}
 		
 
