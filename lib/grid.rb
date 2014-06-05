@@ -8,7 +8,13 @@ class Grid
   attr_reader :board
 
   def show_as_grid
-    board.values.each_slice(10) {|sea| p sea}
+    x_axis = (' A'..' J').to_a
+    print "0 #{x_axis}\n"
+    y_axis = 1
+    board.values.each_slice(10) do|sea| 
+    print "#{y_axis} #{sea}\n" 
+    y_axis += 1
+    end
   end
 
   def create_grid
