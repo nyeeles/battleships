@@ -26,4 +26,7 @@ class Game
 	attr_accessor :destroyer
 	attr_accessor :battleship
 
+	def place_ships_message_to(player)
+		puts "#{player}, place your ships now"
+	end	
 end
