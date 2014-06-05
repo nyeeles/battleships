@@ -7,29 +7,38 @@ class Grid
   
   attr_reader :board
 
+  def show_as_grid
+    board.each_slice(10) {|sea| p sea}
+  end
+
   def create_grid
-    ('A'..'J').to_a.each do |letter|
-      (1..10).to_a.each do |number|
-        @board["#{letter}#{number}"] = "sea "
+    ('A'..'J').to_a.each do |column|
+      (1..10).to_a.each do |row|
+        @board["#{column}#{row}"] = :sea
       end
     end
   end
 
   def fire_at(coordinate)
-    if check(coordinate) == "sea "
-      board[coordinate] = "missed"
+    if check(coordinate) == :sea
+      board[coordinate] = :missed
     else
       check(coordinate).hit!
-      board[coordinate] = "hit"
+      board[coordinate] = :hit
     end
   end
 
-   def check(coordinate)
+  def check(coordinate)
     board[coordinate]
   end
 
 ###############################################
   # BELOW NEEDS REFACTORING!
+
+  # def test(input, length)
+  #   0.upto(length - 1).map do |i| 
+  #   [(input.split('')[0].ord + i).chr, input.split('')[1]].join
+  # end
 
   def insert(ship,position)
     board[position] = ship

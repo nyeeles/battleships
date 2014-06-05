@@ -37,4 +37,5 @@ class Ship
   def lives_left
     @lives_left
   end
+
 end

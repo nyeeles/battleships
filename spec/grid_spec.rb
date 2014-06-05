@@ -21,7 +21,7 @@ describe 'Grid' do
 		end
 
 		it 'can miss a ship when firing' do
-			expect(grid.fire_at("B6")).to eq "missed"
+			expect(grid.fire_at("B6")).to eq :missed
 		end
 
 		it 'can hit ship when firing at' do
@@ -31,12 +31,12 @@ describe 'Grid' do
 
 		it 'changes grid to "miss" if user fires at an empty square' do
 			grid.fire_at("F2")
-			expect(grid.board["F2"]).to eq "missed"
+			expect(grid.board["F2"]).to eq :missed
 		end
 
 		it 'changes grid to "hit" if user fires and hits a ship' do
 			grid.fire_at("B5")
-			expect(grid.board["B5"]).to eq "hit"
+			expect(grid.board["B5"]).to eq :hit
 		end
 
 ##################################################################
