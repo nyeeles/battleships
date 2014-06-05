@@ -4,8 +4,8 @@ require_relative 'grid'
 class Game
 
 	def initialize 
-		@playa_1 = Playa.new
-		@playa_2 = Playa.new
+		@player_1 = player.new
+		@player_2 = player.new
 		@p1_primary_grid = Grid.new
 		@p1_tracker_grid = Grid.new
 		@p2_primary_grid = Grid.new

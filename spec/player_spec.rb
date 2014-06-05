@@ -1,14 +1,9 @@
 require 'player'
 
-	describe Playa do
+	describe player do
 
-
-		it 'can create a playa' do 
-			playa_1 = Playa.new
-			expect(playa_1).to eq playa_1
+		it 'can create a player' do 
+			player_1 = player.new
+			expect(player_1).to eq player_1
 		end
-
-
-
-
 	end

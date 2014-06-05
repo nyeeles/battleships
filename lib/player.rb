@@ -1,5 +1,2 @@
-class Playa
-
-
-
+class Player
 end
