@@ -21,7 +21,7 @@ describe 'Grid' do
 		end
 
 		it 'can miss a ship when firing' do
-			expect(grid.fire_at("B6")).to eq :missed
+			expect(grid.fire_at("B6")).to eq :miss
 		end
 
 		it 'can hit ship when firing at' do
@@ -31,7 +31,7 @@ describe 'Grid' do
 
 		it 'changes grid to "miss" if user fires at an empty square' do
 			grid.fire_at("F2")
-			expect(grid.board["F2"]).to eq :missed
+			expect(grid.board["F2"]).to eq :miss
 		end
 
 		it 'changes grid to "hit" if user fires and hits a ship' do
@@ -53,12 +53,12 @@ describe 'Grid' do
 		end
 
 		it 'can place boats 2 squares long, horizontally' do
-			grid.insert_medium_horizontal(patrol_boat, "C3", "D3")
+			grid.insert_horizontal(patrol_boat, "C3")
 			expect(grid.check("D3")).to eq patrol_boat
 		end
 
 		it 'can place boats 3 squares long, horizontally' do
-			grid.insert_large_horizontal(submarine, "C3", "D3", "E3")
+			grid.insert_horizontal(submarine, "C3")
 			expect(grid.check("E3")).to eq submarine
 		end
 end
