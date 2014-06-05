@@ -43,22 +43,22 @@ describe 'Grid' do
 		# BELOW NEEDS REFACTORING!
 
 		it 'can place boats 2 squares long, vertically' do
-			grid.place_medium(patrol_boat, "C3")
+			grid.insert_vertical(patrol_boat, "C3")
 			expect(grid.check("C4")).to eq patrol_boat
 		end
 
 		it 'can place boats 3 squares long, vertically' do
-			grid.place_long(submarine, "C3")
+			grid.insert_vertical(submarine, "C3")
 			expect(grid.check("C5")).to eq submarine
 		end
 
 		it 'can place boats 2 squares long, horizontally' do
-			grid.place_medium_horizontally(patrol_boat, "C3", "D3")
+			grid.insert_medium_horizontal(patrol_boat, "C3", "D3")
 			expect(grid.check("D3")).to eq patrol_boat
 		end
 
 		it 'can place boats 3 squares long, horizontally' do
-			grid.place_long_horizontally(submarine, "C3", "D3", "E3")
+			grid.insert_large_horizontal(submarine, "C3", "D3", "E3")
 			expect(grid.check("E3")).to eq submarine
 		end
 end

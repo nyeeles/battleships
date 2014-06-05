@@ -30,32 +30,31 @@ class Grid
 
 ###############################################
   # BELOW NEEDS REFACTORING!
-  
+
   def insert(ship,position)
     board[position] = ship
     board
   end
 
-  def place_medium(ship,position)
-    board[position] = ship
-    board[position.next] = ship
+  def insert_vertical(ship, position)
+    if ship.length? == 2
+      board[position] = ship
+      board[position.next] = ship
+    elsif ship.length? == 3
+      board[position] = ship
+      board[position.next] = ship
+      board[position.next.next] = ship
+    end
     board
-  end
+  end 
 
-  def place_long(ship,position)
-    board[position] = ship
-    board[position.next] = ship
-    board[position.next.next] = ship
-    board
-  end
-
-  def place_medium_horizontally(ship, position1, position2)
+  def insert_medium_horizontal(ship, position1, position2)
     board[position1] = ship
     board[position2] = ship
     board
   end
 
-  def place_long_horizontally(ship, position1, position2, position3)
+  def insert_large_horizontal(ship, position1, position2, position3)
     board[position1] = ship
     board[position2] = ship
     board[position3] = ship
