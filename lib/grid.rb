@@ -8,13 +8,13 @@ class Grid
   attr_reader :board
 
   def show_as_grid
-    board.each_slice(10) {|sea| p sea}
+    board.values.each_slice(10) {|sea| p sea}
   end
 
   def create_grid
-    ('A'..'J').to_a.each do |column|
-      (1..10).to_a.each do |row|
-        @board["#{column}#{row}"] = :sea
+    (1..10).to_a.each do |column|
+      ('A'..'J').to_a.each do |row|
+        @board["#{row}#{column}"] = :sea
       end
     end
   end
