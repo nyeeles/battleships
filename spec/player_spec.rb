@@ -1,9 +1,9 @@
 require 'player'
 
-	describe player do
+	describe Player do
 
-		it 'can create a player' do 
-			player_1 = player.new
-			expect(player_1).to eq player_1
+		it 'can have a name' do 
+			player1 = Player.new('nic')
+			expect(player1.name).to eq 'nic'
 		end
 	end

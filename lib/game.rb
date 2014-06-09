@@ -14,7 +14,7 @@ class Game
 		# @patrol_boat = Ship.new(2)
 		# @destroyer = Ship.new(3)
 		# @battleship = Ship.new(4)
-		patrol = Patrol.new
+		@patrol = Patrol.new
 		destroyer = Destroyer.new
 		carrier = Carrier.new
 	end
@@ -25,9 +25,7 @@ class Game
 	attr_accessor :p1_tracker_grid
 	attr_accessor :p2_primary_grid
 	attr_accessor :p2_tracker_grid
-	attr_accessor :patrol_boat
-	attr_accessor :destroyer
-	attr_accessor :battleship
+
 
 # player 1, place your patrol_boat
 # show grid
@@ -43,9 +41,9 @@ class Game
 		puts "Horizontal or vertical?"
 		orientation = gets.chomp
 		if orientation == 'vertical'
-			p1_primary_grid.insert_vertical(patrol_boat, coordinate)
+			p1_primary_grid.insert_vertical(@patrol, coordinate)
 		else
-			p1_primary_grid.insert_horizontal(patrol_boat, coordinate)
+			p1_primary_grid.insert_horizontal(@patrol, coordinate)
 		end
 		p1_primary_grid.show_as_grid
 	end	

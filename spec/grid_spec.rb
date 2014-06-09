@@ -8,7 +8,7 @@ describe 'Grid' do
 	let (:destroyer) {Destroyer.new}
 	let (:grid) {Grid.new}
 	before(:each) do 
-		grid.insert(patrol,"B5")
+		grid.insert_vertical(patrol,"B5")
 	end
 
 		it 'is created after initialization' do
@@ -20,7 +20,7 @@ describe 'Grid' do
 		end
 
 		it 'can miss a ship when firing' do
-			expect(grid.fire_at("B6")).to eq :miss
+			expect(grid.fire_at("B7")).to eq :miss
 		end
 
 		it 'can hit ship when firing at' do

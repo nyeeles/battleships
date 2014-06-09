@@ -41,11 +41,6 @@ class Grid
 ###############################################
   # BELOW NEEDS REFACTORING!
 
-  def insert(ship, coordinate)
-    board[coordinate] = ship
-    board
-  end
-
   def insert_horizontal(ship, coordinate)
     array = [coordinate].concat(1.upto(ship.length? - 1).map do |i|
       coordinate = ["#{coordinate[0]}".next.concat("#{coordinate[1]}")].join
