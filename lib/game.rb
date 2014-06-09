@@ -11,9 +11,12 @@ class Game
 		@p1_tracker_grid = Grid.new
 		@p2_primary_grid = Grid.new
 		@p2_tracker_grid = Grid.new
-		@patrol_boat = Ship.new(2)
-		@destroyer = Ship.new(3)
-		@battleship = Ship.new(4)
+		# @patrol_boat = Ship.new(2)
+		# @destroyer = Ship.new(3)
+		# @battleship = Ship.new(4)
+		patrol = Patrol.new
+		destroyer = Destroyer.new
+		carrier = Carrier.new
 	end
 
 	attr_accessor :player_1
