@@ -1,10 +1,11 @@
 class Ship
 
-  def initialize(length=1)
+  def initialize(length, name)
     @hit = false
     @sunk = false
     @length = length
     @lives_left = @length
+    @name = name
   end
 
   def hit?
@@ -38,4 +39,30 @@ class Ship
     @lives_left
   end
 
+end
+
+###########################################
+
+class Patrol < Ship
+  SIZE = 2
+  NAME = :patrol
+  def initialize
+    super(SIZE, NAME)
+  end
+end
+
+class Destroyer < Ship
+  SIZE = 3
+  NAME = :destroyer
+  def initialize
+    super(SIZE, NAME)
+  end
+end
+
+class Carrier < Ship
+  SIZE = 4
+  NAME = :carrier
+  def initialize
+    super(SIZE, NAME)
+  end
 end

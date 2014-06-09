@@ -13,5 +13,10 @@ describe 'Battleships' do
 			game.place_ships_message_to(player)
 		end
 
+		it 'prompts players to take their turn' do
+			expect(STDOUT).to receive(:puts)
+			game.your_turn_to_fire(player)
+		end
 	end
+
 end

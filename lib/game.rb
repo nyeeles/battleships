@@ -26,7 +26,28 @@ class Game
 	attr_accessor :destroyer
 	attr_accessor :battleship
 
+# player 1, place your patrol_boat
+# show grid
+# gets chomp 
+# places patrol boat
+# shows it on grid
+# player 1, place your destroyer etc
+
+
 	def place_ships_message_to(player)
 		puts "#{player}, place your ships now"
+		coordinate = gets.chomp
+		puts "Horizontal or vertical?"
+		orientation = gets.chomp
+		if orientation == 'vertical'
+			p1_primary_grid.insert_vertical(patrol_boat, coordinate)
+		else
+			p1_primary_grid.insert_horizontal(patrol_boat, coordinate)
+		end
+		p1_primary_grid.show_as_grid
 	end	
+
+	def your_turn_to_fire(player)
+		puts "#{player}, you're up! Take a shot"
+	end
 end
