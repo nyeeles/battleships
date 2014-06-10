@@ -6,9 +6,12 @@ class Grid
   def initialize
     @board = {}
     create_grid
+    @all_ships ||= []
   end
   
   attr_reader :board
+  attr_reader :all_ships
+
 
   # def show_as_grid
   #   x_axis = (' A'..' J').to_a
@@ -23,7 +26,7 @@ class Grid
   def create_grid
     (1..10).to_a.each do |column|
       ('A'..'J').to_a.each do |row|
-        @board["#{row}#{column}"] = :sea
+        @board["#{row}#{column}"] = :-
       end
     end
     board
@@ -41,29 +44,30 @@ class Grid
   # BELOW NEEDS REFACTORING!
 
   def insert_horizontal(ship, coordinate)
-    array = [coordinate].concat(1.upto(ship.length? - 1).map do |i|
+    @cells = [coordinate].concat(1.upto(ship.length? - 1).map do |i|
       coordinate = ["#{coordinate[0]}".next.concat("#{coordinate[1]}")].join
     end)
-    array.each {|cell| board[cell] = ship}
+    @cells.each {|cell| board[cell] = ship}
+    store_all_inserted_ships
+  end
+
+  def store_all_inserted_ships
+    all_ships << @cells
   end
 
   def insert_vertical(ship, coordinate)
-    array = [coordinate].concat(1.upto(ship.length? - 1).map do |i|
+    @cells = [coordinate].concat(1.upto(ship.length? - 1).map do |i|
       coordinate = [coordinate.next].join
     end)
-    array.each {|cell| board[cell] = ship}
+    @cells.each {|cell| board[cell] = ship}
+    store_all_inserted_ships
   end
 end
 
 class PrimaryGrid < Grid
 
-  def initialize(player)
-    @player = Player.new(player)
-    board
-  end
-
   def show_as_grid
-    x_axis = (' A'..' J').to_a
+    x_axis = ('A'..'J').to_a
     print "0 #{x_axis}\n"
     y_axis = 1
     Grid.new.board.values.each_slice(10) do|sea| 
@@ -74,10 +78,6 @@ class PrimaryGrid < Grid
 end
 
 class TrackingGrid < Grid
-  def initialize(player)
-    @player = Player.new(player)
-    board
-  end
 
   def show_as_grid
     x_axis = (' A'..' J').to_a
