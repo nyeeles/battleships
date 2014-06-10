@@ -13,15 +13,15 @@ class Grid
   attr_reader :all_ships
 
 
-  # def show_as_grid
-  #   x_axis = (' A'..' J').to_a
-  #   print "0 #{x_axis}\n"
-  #   y_axis = 1
-  #   board.values.each_slice(10) do|sea| 
-  #   print "#{y_axis} #{sea}\n" 
-  #   y_axis += 1
-  #   end
-  # end
+  def show_as_grid
+    x_axis = (' A'..' J').to_a
+    print "0 #{x_axis}\n"
+    y_axis = 1
+    board.values.each_slice(10) do|sea| 
+    print "#{y_axis} #{sea}\n" 
+    y_axis += 1
+    end
+  end
 
   def create_grid
     (1..10).to_a.each do |column|
@@ -66,11 +66,16 @@ end
 
 class PrimaryGrid < Grid
 
+  def convert_ship_coordinate_to_symbol
+    all_ships.flatten.each { |coord| board[coord] = :o }
+  end
+
   def show_as_grid
+    convert_ship_coordinate_to_symbol
     x_axis = ('A'..'J').to_a
     print "0 #{x_axis}\n"
     y_axis = 1
-    Grid.new.board.values.each_slice(10) do|sea| 
+    board.values.each_slice(10) do|sea| 
     print "#{y_axis} #{sea}\n" 
     y_axis += 1
     end
@@ -83,7 +88,7 @@ class TrackingGrid < Grid
     x_axis = (' A'..' J').to_a
     print "0 #{x_axis}\n"
     y_axis = 1
-    Grid.new.board.values.each_slice(10) do|sea| 
+    board.values.each_slice(10) do|sea| 
     print "#{y_axis} #{sea}\n" 
     y_axis += 1
     end
