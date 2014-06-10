@@ -8,6 +8,11 @@ class Ship
     @name = name
   end
 
+  def name
+    @name
+    self
+  end
+
   def hit?
     @hit
   end

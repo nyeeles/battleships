@@ -38,7 +38,7 @@ class Game
 	def place_ships_message_to(player)
 		puts "#{player}, place your ships now"
 		coordinate = gets.chomp
-		puts "Horizontal or vertical?"
+		#puts "Horizontal or vertical?"
 		orientation = gets.chomp
 		if orientation == 'vertical'
 			p1_primary_grid.insert_vertical(@patrol, coordinate)

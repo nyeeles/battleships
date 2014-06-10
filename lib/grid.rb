@@ -1,3 +1,6 @@
+require_relative 'player'
+require_relative 'ship'
+require_relative 'game'
 class Grid
 
   def initialize
@@ -7,15 +10,15 @@ class Grid
   
   attr_reader :board
 
-  def show_as_grid
-    x_axis = (' A'..' J').to_a
-    print "0 #{x_axis}\n"
-    y_axis = 1
-    board.values.each_slice(10) do|sea| 
-    print "#{y_axis} #{sea}\n" 
-    y_axis += 1
-    end
-  end
+  # def show_as_grid
+  #   x_axis = (' A'..' J').to_a
+  #   print "0 #{x_axis}\n"
+  #   y_axis = 1
+  #   board.values.each_slice(10) do|sea| 
+  #   print "#{y_axis} #{sea}\n" 
+  #   y_axis += 1
+  #   end
+  # end
 
   def create_grid
     (1..10).to_a.each do |column|
@@ -23,15 +26,11 @@ class Grid
         @board["#{row}#{column}"] = :sea
       end
     end
+    board
   end
 
   def fire_at(coordinate)
-    if check(coordinate) == :sea
-      board[coordinate] = :miss
-    else
-      check(coordinate).hit!
-      board[coordinate] = :hit
-    end
+      check(coordinate).hit! if board[coordinate] != :sea
   end
 
   def check(coordinate)
@@ -53,5 +52,40 @@ class Grid
       coordinate = [coordinate.next].join
     end)
     array.each {|cell| board[cell] = ship}
+  end
+end
+
+class PrimaryGrid < Grid
+
+  def initialize(player)
+    @player = Player.new(player)
+    board
+  end
+
+  def show_as_grid
+    x_axis = (' A'..' J').to_a
+    print "0 #{x_axis}\n"
+    y_axis = 1
+    Grid.new.board.values.each_slice(10) do|sea| 
+    print "#{y_axis} #{sea}\n" 
+    y_axis += 1
+    end
+  end
+end
+
+class TrackingGrid < Grid
+  def initialize(player)
+    @player = Player.new(player)
+    board
+  end
+
+  def show_as_grid
+    x_axis = (' A'..' J').to_a
+    print "0 #{x_axis}\n"
+    y_axis = 1
+    Grid.new.board.values.each_slice(10) do|sea| 
+    print "#{y_axis} #{sea}\n" 
+    y_axis += 1
+    end
   end
 end
